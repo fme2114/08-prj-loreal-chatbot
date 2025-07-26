@@ -5,10 +5,80 @@
   padding: 0;
 }
 
+/* —— L'Oréal Brand Fonts —— */
+/* Add these font-face declarations when you have the actual font files */
+/*
+@font-face {
+  font-family: 'Helvetica Now Display W05 Reg';
+  src: url('fonts/HelveticaNowDisplay-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display W05 Lt';
+  src: url('fonts/HelveticaNowDisplay-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display W05 Bd';
+  src: url('fonts/HelveticaNowDisplay-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Halesworth eText Bold';
+  src: url('fonts/Halesworth-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Halesworth eText Medium';
+  src: url('fonts/Halesworth-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+*/
+
+/* —— Font utility classes —— */
+.font-light {
+  font-family: "Helvetica Now Display W05 Lt", "Helvetica Now Display",
+    Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+.font-regular {
+  font-family: "Helvetica Now Display W05 Reg", "Helvetica Now Display",
+    Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+.font-bold {
+  font-family: "Helvetica Now Display W05 Bd", "Helvetica Now Display",
+    Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.header-medium {
+  font-family: "Halesworth eText Medium", "Halesworth eText", Georgia, serif;
+  font-weight: 500;
+}
+
+.header-bold {
+  font-family: "Halesworth eText Bold", "Halesworth eText", Georgia, serif;
+  font-weight: bold;
+}
+
 /* —— body + fonts —— */
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
+  font-family: "Helvetica Now Display W05 Reg", "Helvetica Now Display",
+    Helvetica, Arial, sans-serif;
+  color: #000000;
+  background: #ffffff;
   display: flex;
   justify-content: center;
 }
@@ -22,12 +92,24 @@ body {
 .site-header {
   text-align: center;
   padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
 }
 
 .site-title {
   font-size: 22px;
-  font-weight: 500;
+  font-family: "Halesworth eText Bold", "Halesworth eText", Georgia, serif;
+  font-weight: bold;
   margin-bottom: 10px;
+  color: #000000;
+  letter-spacing: 0.5px;
 }
 
 /* chat window */
@@ -37,13 +119,14 @@ body {
 
 .chat-window {
   height: 360px;
-  border: 1px solid #000;
+  border: 2px solid #000000;
   padding: 20px;
   font-size: 18px;
   line-height: 1.5;
   overflow-y: auto;
-  background: #fafafa;
+  background: #ffffff;
   white-space: pre-line;
+  border-radius: 8px;
 }
 
 /* messages */
@@ -53,11 +136,22 @@ body {
 }
 
 .msg.user {
-  color: #000;
+  color: #000000;
+  font-family: "Helvetica Now Display W05 Bd", "Helvetica Now Display",
+    Helvetica, Arial, sans-serif;
+  font-weight: bold;
 }
 
 .msg.ai {
-  color: #666666;
+  color: #4a4a4a;
+  padding: 12px;
+  background: #f8f8f8;
+  border-left: 4px solid #ff003b;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-family: "Helvetica Now Display W05 Reg", "Helvetica Now Display",
+    Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 
 /* input row */
@@ -70,19 +164,22 @@ body {
 .chat-form input {
   flex: 1;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 2px solid #e0e0e0;
   font-size: 18px;
+  border-radius: 6px;
+  transition: border-color 0.3s;
 }
 
 .chat-form input:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
+  outline: none;
+  border-color: #e3a535;
+  box-shadow: 0 0 0 3px rgba(227, 165, 53, 0.1);
 }
 
 .chat-form button {
   font-size: 18px;
-  background: #000;
-  color: #fff;
+  background: #000000;
+  color: #ffffff;
   border: none;
   padding: 12px;
   width: 48px;
@@ -91,7 +188,8 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s;
+  border-radius: 6px;
 }
 
 .chat-form button .material-icons {
@@ -99,12 +197,13 @@ body {
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: #ff003b;
+  transform: translateY(-1px);
 }
 
 .chat-form button:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 0, 59, 0.3);
 }
 
 /* visually hidden */
@@ -125,7 +224,9 @@ body {
   margin: 60px 0 40px;
   text-align: center;
   font-size: 14px;
-  color: #666;
+  color: #4a4a4a;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 30px;
 }
 
 .site-footer nav {
@@ -134,10 +235,14 @@ body {
 
 .site-footer a {
   margin: 0 8px;
-  color: #000;
+  color: #000000;
   text-decoration: none;
+  font-family: "Helvetica Now Display W05 Bd", "Helvetica Now Display",
+    Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  transition: color 0.3s;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: #ff003b;
 }
